@@ -1,4 +1,12 @@
+using AppAngular.Server.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configurar la base de datos
+builder.Services.AddDbContext<ModelContext>(options=>
+    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
 // Add services to the container.
 
