@@ -1,4 +1,8 @@
 using AppAngular.Server.Models;
+using AppAngular.Server.Repositorio;
+using AppAngular.Server.RepositorioImp;
+using AppAngular.Server.Servicio;
+using AppAngular.Server.ServicioImp;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +18,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IServicioUsuario, ServicioUsuarioImp>();
+builder.Services.AddScoped<IRepositorioUsuario, RepositorioUsuarioImp>();
 
 var app = builder.Build();
 
